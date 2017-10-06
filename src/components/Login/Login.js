@@ -4,8 +4,8 @@ import logo from './../../assets/logo.png';
 export default class Login extends Component {
         render(){
         return(
-            <div className='login'>
-                <img src = {logo} alt="winky face"/>
+            <div className='Login'>
+                <img src={logo} alt=""/>
                 <a href ='http://localhost:3005/auth'><button>Login / Register</button></a>
             </div>
         )
