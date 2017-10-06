@@ -5,6 +5,9 @@ import homePNG from './../../assets/home.png';
 import searchPNG from './../../assets/search.png';
 import mePNG from './../../assets/me.png';
 import { Link } from 'react-router-dom';
+import { getUserInfo, getFriends } from './../../ducks/reducer.js';
+import axios from 'axios';
+
 
 
 class Dashboard extends Component {
@@ -16,6 +19,14 @@ class Dashboard extends Component {
             recFriends: {}
         }
     }
+
+    componentDidMount() {
+        this.props.getUserInfo()
+        const userID = this.props.user.id
+        this.props.getFriends()
+    }
+
+
 
     render() {
         return (
@@ -62,4 +73,10 @@ class Dashboard extends Component {
 }
 
 
-export default Dashboard
+function mapStateToProps(state){
+    return {
+        user: state.user,
+        friends: state.friends
+    }
+}
+export default connect(mapStateToProps, { getUserInfo, getFriends })(Dashboard)
